@@ -1,11 +1,14 @@
 import React from 'react';
 
+import MyHeader from '../../components/MyHeader/index';
+import ImgPath from '../../assets/img/team.svg';
+
 import { Container } from './styles';
 
 function About() {
   return (
     <Container>
-      <h1>About</h1>
+      <MyHeader title={'Conheça nosso'} text={'Time'} imgPath={ImgPath} />
     </Container>
   );
 }
