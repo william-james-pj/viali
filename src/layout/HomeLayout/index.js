@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-// import Routes from '../../routes/index';
+import Routes from '../../routes/index';
 
 import BarLeft from '../../components/BarLeft/index';
 import BarTop from '../../components/BarTop/index';
-import Home from '../../views/Home/index';
 
 import {
   Container,
@@ -29,7 +28,7 @@ function HomeLayout() {
         <BarTop callbackFromParent={myCallback} />
       </BarTopContainer>
       <Content>
-        <Home />
+        <Routes />
       </Content>
     </Container>
   );
