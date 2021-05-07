@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Hamburge = styled.div`
   width: 100%;
   height: 100%;
-  padding-left: 30px;
+  padding-left: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -32,6 +32,8 @@ export const SpanContainer = styled.div`
   ${respondToUp.md`
     display: none;
   `}
+
+  -webkit-tap-highlight-color: transparent;
 `;
 
 export const Span = styled.span`
@@ -51,4 +53,6 @@ export const Span = styled.span`
       ? 'rotate(-45deg)'
       : ''};
   opacity: ${(props) => (props.active === 2 ? 0 : 1)};
+
+  -webkit-tap-highlight-color: transparent;
 `;

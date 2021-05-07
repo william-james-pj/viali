@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import history from '../../services/history';
@@ -13,15 +14,19 @@ import {
 
 import { Container, Menu, MenuItem, Item } from './styles';
 
-function BarLeft() {
+function BarLeft(props) {
   const location = useLocation();
+
   return (
     <Container>
       <Menu>
         <MenuItem>
           <Item
             active={location.pathname == '/' ? true : false}
-            onClick={() => history.push('/')}
+            onClick={() => {
+              history.push('/');
+              props.menuClick();
+            }}
           >
             <FontAwesomeIcon icon={faHome} size="lg" />
           </Item>
@@ -29,7 +34,10 @@ function BarLeft() {
         <MenuItem>
           <Item
             active={location.pathname == '/podcast' ? true : false}
-            onClick={() => history.push('/podcast')}
+            onClick={() => {
+              history.push('/podcast');
+              props.menuClick();
+            }}
           >
             <FontAwesomeIcon icon={faMicrophoneAlt} size="lg" />
           </Item>
@@ -37,7 +45,10 @@ function BarLeft() {
         <MenuItem>
           <Item
             active={location.pathname == '/game' ? true : false}
-            onClick={() => history.push('/game')}
+            onClick={() => {
+              history.push('/game');
+              props.menuClick();
+            }}
           >
             <FontAwesomeIcon icon={faGamepad} size="lg" />
           </Item>
@@ -45,7 +56,10 @@ function BarLeft() {
         <MenuItem>
           <Item
             active={location.pathname == '/mentalmap' ? true : false}
-            onClick={() => history.push('/mentalmap')}
+            onClick={() => {
+              history.push('/mentalmap');
+              props.menuClick();
+            }}
           >
             <FontAwesomeIcon icon={faBrain} size="lg" />
           </Item>
@@ -53,7 +67,10 @@ function BarLeft() {
         <MenuItem>
           <Item
             active={location.pathname == '/aboutus' ? true : false}
-            onClick={() => history.push('/aboutus')}
+            onClick={() => {
+              history.push('/aboutus');
+              props.menuClick();
+            }}
           >
             <FontAwesomeIcon icon={faUsers} size="lg" />
           </Item>

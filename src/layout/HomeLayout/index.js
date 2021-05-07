@@ -13,19 +13,25 @@ import {
 
 function HomeLayout() {
   const [menuActive, setMenuActive] = useState(0);
+  const [menuOpen, setMenuOpen] = useState([0, 0, 0]);
 
-  const myCallback = (dataFromChild) => {
-    if (dataFromChild[0] === 1) setMenuActive(1);
-    else setMenuActive(0);
-  };
+  function menuClick() {
+    if (menuActive === 1) {
+      setMenuActive(0);
+      setMenuOpen([0, 0, 0]);
+    } else {
+      setMenuActive(1);
+      setMenuOpen([1, 2, 3]);
+    }
+  }
 
   return (
     <Container>
       <BarLeftContainer active={menuActive}>
-        <BarLeft />
+        <BarLeft menuClick={menuClick} />
       </BarLeftContainer>
       <BarTopContainer>
-        <BarTop callbackFromParent={myCallback} />
+        <BarTop menuOpen={menuOpen} menuClick={menuClick} />
       </BarTopContainer>
       <Content>
         <Routes />

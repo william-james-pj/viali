@@ -44,7 +44,7 @@ export const BarLeftContainer = styled.div`
     left: ${(props) => (props.active ? '0px' : '-120px')};
     bottom: 0;
     height: 100vh;
-    width: 80px;
+    width: 100px;
     z-index: 98;
     animation-name: ${(props) =>
       props.active ? menuAnimationOpen : menuAnimationClose};

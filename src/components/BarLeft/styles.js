@@ -42,6 +42,8 @@ export const Item = styled.div`
   cursor: pointer;
   border-radius: 20px;
 
+  -webkit-tap-highlight-color: transparent;
+
   color: ${(props) => (props.active ? color.secondColor : color.primaryColor)};
   background: ${(props) =>
     props.active ? color.primaryColor : color.secondColor};
