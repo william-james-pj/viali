@@ -1,9 +1,10 @@
 import React from 'react';
 
+import Gallery from '../../components/Gallery/index';
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/play-game.svg';
 
-import { Container } from './styles';
+import { Container, Text, GalleryContainer } from './styles';
 
 function Game() {
   return (
@@ -13,6 +14,10 @@ function Game() {
         text={'Jogos'}
         imgPath={ImgPath}
       />
+      <Text>Populares</Text>
+      <GalleryContainer>
+        <Gallery horizontal />
+      </GalleryContainer>
     </Container>
   );
 }

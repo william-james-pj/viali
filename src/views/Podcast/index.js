@@ -1,25 +1,23 @@
 import React from 'react';
 
+import Gallery from '../../components/Gallery/index';
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/podcast.svg';
-import Slide from '../../components/Slide/index';
 
-import { Container, Text, SlideContainer, PaddingContainer } from './styles';
+import { Container, Text, GalleryContainer } from './styles';
 
 function Podcast() {
   return (
     <Container>
-      <PaddingContainer>
-        <MyHeader
-          title={'Olá seja bem-vindo ao'}
-          text={'Podcast'}
-          imgPath={ImgPath}
-        />
-      </PaddingContainer>
+      <MyHeader
+        title={'Olá seja bem-vindo ao'}
+        text={'Podcast'}
+        imgPath={ImgPath}
+      />
       <Text>Originais ViALi</Text>
-      <SlideContainer>
-        <Slide />
-      </SlideContainer>
+      <GalleryContainer>
+        <Gallery />
+      </GalleryContainer>
     </Container>
   );
 }

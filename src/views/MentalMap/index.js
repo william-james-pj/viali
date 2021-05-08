@@ -1,9 +1,10 @@
 import React from 'react';
 
+import Gallery from '../../components/Gallery/index';
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/mind-maps.svg';
 
-import { Container } from './styles';
+import { Container, Text, GalleryContainer } from './styles';
 
 function MentalMap() {
   return (
@@ -13,6 +14,10 @@ function MentalMap() {
         text={'Mapa Mental'}
         imgPath={ImgPath}
       />
+      <Text>Em alta</Text>
+      <GalleryContainer>
+        <Gallery horizontal />
+      </GalleryContainer>
     </Container>
   );
 }

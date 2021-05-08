@@ -5,10 +5,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-`;
-
-export const PaddingContainer = styled.div`
-  padding: 30px 30px 0 30px;
+  padding: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const Text = styled.div`
@@ -16,10 +15,9 @@ export const Text = styled.div`
   font-weight: 700;
   margin-top: 35px;
   margin-bottom: 20px;
-  padding-left: 30px;
 `;
 
-export const SlideContainer = styled.div`
+export const GalleryContainer = styled.div`
   width: 100%;
   height: auto;
 `;
