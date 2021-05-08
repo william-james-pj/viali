@@ -67,4 +67,8 @@ export const BarTopContainer = styled.div`
 export const Content = styled.div`
   grid-area: content;
   overflow: hidden;
+
+  ${respondToDown.md`
+    overflow: auto;
+  `}
 `;
