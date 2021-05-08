@@ -1,5 +1,6 @@
 export const white = '#FFF';
 export const white2 = '#FAFAFF';
+export const blackText = '#24292E';
 
 export const colorGreen1 = '#00EA9A';
 export const colorGreen2 = 'rgba(0, 234, 154, 0.8)';
