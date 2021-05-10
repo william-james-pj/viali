@@ -6,6 +6,15 @@ import ImgPath from '../../assets/img/podcast.svg';
 
 import { Container, Text, GalleryContainer } from './styles';
 
+import ImgPath2 from '../../assets/img/virus.png';
+
+const items = [
+  {
+    imgUrl: ImgPath2,
+    title: 'Vírus e Virose',
+  },
+];
+
 function Podcast() {
   return (
     <Container>
@@ -16,7 +25,7 @@ function Podcast() {
       />
       <Text>Originais ViALi</Text>
       <GalleryContainer>
-        <Gallery />
+        <Gallery items={items} />
       </GalleryContainer>
     </Container>
   );

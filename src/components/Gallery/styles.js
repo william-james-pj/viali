@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-// import * as color from '../../config/colors';
-// import * as fonts from '../../config/fonts';
+import * as color from '../../config/colors';
+import * as fonts from '../../config/fonts';
 import { respondToDown } from '../../config/respondTo';
 
 export const Container = styled.div`
@@ -47,9 +47,20 @@ export const Override = styled.div`
   height: 100%;
   background: #000;
   opacity: 0.5;
-  z-index: 5;
+  z-index: 2;
   position: absolute;
   top: 0;
+`;
+
+export const Title = styled.div`
+  width: 50%;
+  z-index: 3;
+  color: ${color.white};
+  font-weight: 700;
+  font-size: ${fonts.normal};
+  position: absolute;
+  top: 60%;
+  left: 15px;
 `;
 
 export const ImgList = styled.img`

@@ -1,31 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, ItemsContainer, Item, ImgList, Override } from './styles';
-import ImgPath from '../../assets/img/virus.png';
+import {
+  Container,
+  ItemsContainer,
+  Item,
+  ImgList,
+  Override,
+  Title,
+} from './styles';
 
-const items = [
-  {
-    imgUrl: ImgPath,
-  },
-  {
-    imgUrl: ImgPath,
-  },
-  {
-    imgUrl: ImgPath,
-  },
-  {
-    imgUrl: ImgPath,
-  },
-  {
-    imgUrl: ImgPath,
-  },
-  {
-    imgUrl: ImgPath,
-  },
-];
-
-function Gallery({ horizontal }) {
+function Gallery({ horizontal, items }) {
   return (
     <Container>
       {items.length > 0 &&
@@ -34,6 +19,7 @@ function Gallery({ horizontal }) {
             <ItemsContainer key={key} horizontal={horizontal}>
               <Item>
                 <ImgList src={item.imgUrl} />
+                <Title>{item.title}</Title>
                 <Override></Override>
               </Item>
             </ItemsContainer>
@@ -45,6 +31,7 @@ function Gallery({ horizontal }) {
 
 Gallery.propTypes = {
   horizontal: PropTypes.bool.isRequired,
+  items: PropTypes.array.isRequired,
 };
 
 export default Gallery;

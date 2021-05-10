@@ -6,6 +6,15 @@ import ImgPath from '../../assets/img/mind-maps.svg';
 
 import { Container, Text, GalleryContainer } from './styles';
 
+import ImgPath2 from '../../assets/img/virus.png';
+
+const items = [
+  {
+    imgUrl: ImgPath2,
+    title: 'Vírus e Virose',
+  },
+];
+
 function MentalMap() {
   return (
     <Container>
@@ -16,7 +25,7 @@ function MentalMap() {
       />
       <Text>Em alta</Text>
       <GalleryContainer>
-        <Gallery horizontal />
+        <Gallery horizontal items={items} />
       </GalleryContainer>
     </Container>
   );
