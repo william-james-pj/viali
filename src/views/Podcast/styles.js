@@ -8,6 +8,7 @@ export const Container = styled.div`
   padding: 30px;
   overflow-y: scroll;
   overflow-x: hidden;
+  position: relative;
 `;
 
 export const Text = styled.div`
