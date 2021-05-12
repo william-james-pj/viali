@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 // import * as color from '../../config/colors';
 // import * as fonts from '../../config/fonts';
+import { respondToDown } from '../../config/respondTo';
 
 export const Container = styled.div`
   width: 100%;
@@ -21,4 +22,8 @@ export const Text = styled.div`
 export const GalleryContainer = styled.div`
   width: 100%;
   height: auto;
+
+  ${respondToDown.md`
+    margin-bottom: 50px;
+  `}
 `;

@@ -23,5 +23,6 @@ export const TeamContainer = styled.div`
     flex-direction: column;
     align-items: space-around;
     justify-content: center;
+    margin-bottom: 80px;
   `}
 `;

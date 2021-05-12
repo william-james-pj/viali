@@ -4,7 +4,7 @@ import * as color from '../../config/colors';
 export const LoaderContainer = styled.div`
   width: 100%;
   height: 100%;
-  z-index: 999;
+  z-index: 97;
 
   display: flex;
   align-items: center;

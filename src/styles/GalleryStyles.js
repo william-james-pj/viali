@@ -4,6 +4,7 @@ import * as fonts from '../config/fonts';
 import { respondToDown } from '../config/respondTo';
 
 export const Gallery = styled.div`
+  width: 100%;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: space-between;
