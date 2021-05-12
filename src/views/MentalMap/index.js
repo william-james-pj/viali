@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../../services/firestore';
+import { db, storage } from '../../services/firestore';
 
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/mind-maps.svg';
@@ -10,14 +10,14 @@ import {
   Gallery,
   ItemsContainer,
   Item,
-  // ImgList,
+  ImgList,
   Override,
   Title,
 } from '../../styles/GalleryStyles';
 
 function MentalMap() {
   const [isLoading, setLoading] = useState(true);
-  // eslint-disable-next-line no-unused-vars
+  const [isImgLoading, setImgLoading] = useState(true);
   const [firebaseData, setFirebaseData] = useState([]);
 
   const fetchData = async () => {
@@ -28,12 +28,35 @@ function MentalMap() {
       data.docs.forEach((documentSnapshot) => {
         items.push({
           title: documentSnapshot.data().title,
+          urlImg: documentSnapshot.data().img,
         });
       });
+      await fetchImg(items);
       setFirebaseData(items);
       setLoading(false);
     } catch (error) {
       setLoading(true);
+      console.log(error);
+    }
+  };
+
+  const fetchImg = async (items) => {
+    try {
+      await Promise.all(
+        items.map(async (item) => {
+          let starsRef = storage.ref('MindMapsImg/' + item.urlImg);
+          await starsRef
+            .getDownloadURL()
+            .then((url) => {
+              item.urlImg = url;
+            })
+            .catch((error) => {
+              console.log(error);
+              return null;
+            });
+        }),
+      );
+    } catch (error) {
       console.log(error);
     }
   };
@@ -64,6 +87,12 @@ function MentalMap() {
               return (
                 <ItemsContainer key={item.title} horizontal={true}>
                   <Item>
+                    {isImgLoading && <Loading active={isImgLoading} />}
+                    <ImgList
+                      src={item.urlImg}
+                      style={{ display: isImgLoading ? 'none' : 'block' }}
+                      onLoad={() => setImgLoading(false)}
+                    />
                     <Title>{item.title}</Title>
                     <Override></Override>
                   </Item>

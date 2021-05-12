@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../../services/firestore';
+import { db, storage } from '../../services/firestore';
 
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/podcast.svg';
@@ -11,27 +11,28 @@ import {
   Gallery,
   ItemsContainer,
   Item,
-  // ImgList,
+  ImgList,
   Override,
   Title,
 } from '../../styles/GalleryStyles';
 
 function Podcast() {
   const [isLoading, setLoading] = useState(true);
-  // eslint-disable-next-line no-unused-vars
   const [isImgLoading, setImgLoading] = useState(true);
   const [firebaseData, setFirebaseData] = useState([]);
 
-  const fetchPodcast = async () => {
+  const fetchData = async () => {
     try {
       let items = [];
       const response = db.collection('Podcasts');
       const data = await response.get();
-      data.docs.forEach((documentSnapshot) => {
+      await data.docs.forEach((documentSnapshot) => {
         items.push({
           title: documentSnapshot.data().title,
+          urlImg: documentSnapshot.data().img,
         });
       });
+      await fetchImg(items);
       setFirebaseData(items);
       setLoading(false);
     } catch (error) {
@@ -40,8 +41,29 @@ function Podcast() {
     }
   };
 
+  const fetchImg = async (items) => {
+    try {
+      await Promise.all(
+        items.map(async (item) => {
+          let starsRef = storage.ref('PodcastsImg/' + item.urlImg);
+          await starsRef
+            .getDownloadURL()
+            .then((url) => {
+              item.urlImg = url;
+            })
+            .catch((error) => {
+              console.log(error);
+              return null;
+            });
+        }),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    fetchPodcast();
+    fetchData();
   }, []);
 
   if (isLoading)
@@ -66,6 +88,12 @@ function Podcast() {
               return (
                 <ItemsContainer key={item.title} horizontal={false}>
                   <Item>
+                    {isImgLoading && <Loading active={isImgLoading} />}
+                    <ImgList
+                      src={item.urlImg}
+                      style={{ display: isImgLoading ? 'none' : 'block' }}
+                      onLoad={() => setImgLoading(false)}
+                    />
                     <Title>{item.title}</Title>
                     <Override></Override>
                   </Item>
