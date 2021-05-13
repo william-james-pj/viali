@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { db, storage } from '../../services/firestore';
 
+import Modal from '@material-ui/core/Modal';
+import ModalGame1 from './ModalGame1/index';
+import ModalGame2 from './ModalGame2/index';
+import { ModalPosition } from '../../styles/Modal';
+
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/play-game.svg';
 import Loading from '../../components/Loading/index';
@@ -19,6 +24,12 @@ function Game() {
   const [isLoading, setLoading] = useState(true);
   const [isImgLoading, setImgLoading] = useState(true);
   const [firebaseData, setFirebaseData] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [modalOpe, setModalOpe] = useState('');
+
+  const handleModal = () => {
+    setModal(!modal);
+  };
 
   const fetchData = async () => {
     try {
@@ -86,7 +97,12 @@ function Game() {
             firebaseData.map((item) => {
               return (
                 <ItemsContainer key={item.title} horizontal={true}>
-                  <Item>
+                  <Item
+                    onClick={() => {
+                      setModalOpe(item.title);
+                      handleModal();
+                    }}
+                  >
                     {isImgLoading && <Loading active={isImgLoading} />}
                     <ImgList
                       src={item.urlImg}
@@ -101,6 +117,17 @@ function Game() {
             })}
         </Gallery>
       </GalleryContainer>
+      <Modal open={modal} onClose={handleModal}>
+        {
+          <ModalPosition>
+            {modalOpe === 'De quem é o híbrido?' ? (
+              <ModalGame1 onClose={handleModal} />
+            ) : (
+              <ModalGame2 onClose={handleModal} />
+            )}
+          </ModalPosition>
+        }
+      </Modal>
     </Container>
   );
 }
