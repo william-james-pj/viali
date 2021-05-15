@@ -8,6 +8,7 @@ export const Container = styled.div`
   height: 100%;
 
   padding: 30px;
+  overflow-x: hidden;
 `;
 
 export const TeamContainer = styled.div`
@@ -16,7 +17,7 @@ export const TeamContainer = styled.div`
   margin-top: 30px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 
   ${respondToDown.md`

@@ -4,8 +4,9 @@ import * as fonts from '../../config/fonts';
 import { respondToDown } from '../../config/respondTo';
 
 export const Container = styled.div`
-  width: 240px;
-  height: 300px;
+  width: 280px;
+  height: auto;
+  min-height: 300px;
   display: flex;
 
   flex-direction: column;
@@ -14,21 +15,23 @@ export const Container = styled.div`
 
   ${respondToDown.md`
     margin-bottom: 30px;
+    width: 100%;
   `}
 `;
 
 export const AvatarContainer = styled.div`
-  width: 65%;
-  height: 50%;
+  width: auto;
+  height: auto;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;
 
 export const AvatarBorder = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 160px;
+  height: 150px;
 
   display: flex;
   align-items: center;
@@ -41,10 +44,17 @@ export const AvatarBorder = styled.div`
 `;
 
 export const Avatar = styled.div`
-  width: 90%;
-  height: 90%;
+  width: 128px;
+  height: 122px;
   background: gray;
   border-radius: 50%;
+  overflow: hidden;
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const TextName = styled.div`
