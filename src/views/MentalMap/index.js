@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { db, storage } from '../../services/firestore';
 
+import Modal from '@material-ui/core/Modal';
+import ModalMindMap from './ModalMindMap/index';
+import { ModalPosition } from '../../styles/Modal';
+
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/mind-maps.svg';
 import Loading from '../../components/Loading/index';
@@ -19,6 +23,13 @@ function MentalMap() {
   const [isLoading, setLoading] = useState(true);
   const [isImgLoading, setImgLoading] = useState(true);
   const [firebaseData, setFirebaseData] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [modalImg, setModalImg] = useState('');
+
+  const handleModal = (url) => {
+    setModalImg(url);
+    setModal(!modal);
+  };
 
   const fetchData = async () => {
     try {
@@ -86,7 +97,7 @@ function MentalMap() {
             firebaseData.map((item) => {
               return (
                 <ItemsContainer key={item.title} horizontal={true}>
-                  <Item>
+                  <Item onClick={() => handleModal(item.urlImg)}>
                     {isImgLoading && <Loading active={isImgLoading} />}
                     <ImgList
                       src={item.urlImg}
@@ -101,6 +112,13 @@ function MentalMap() {
             })}
         </Gallery>
       </GalleryContainer>
+      <Modal open={modal} onClose={handleModal}>
+        {
+          <ModalPosition>
+            <ModalMindMap onClose={handleModal} url={modalImg} />
+          </ModalPosition>
+        }
+      </Modal>
     </Container>
   );
 }
