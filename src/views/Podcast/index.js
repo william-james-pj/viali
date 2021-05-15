@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { db, storage } from '../../services/firestore';
 
+import Modal from '@material-ui/core/Modal';
+import ModalPodcast from './ModalPodcast/index';
+import { ModalPosition } from '../../styles/Modal';
+
 import MyHeader from '../../components/MyHeader/index';
 import ImgPath from '../../assets/img/podcast.svg';
 import Loading from '../../components/Loading/index';
@@ -20,6 +24,13 @@ function Podcast() {
   const [isLoading, setLoading] = useState(true);
   const [isImgLoading, setImgLoading] = useState(true);
   const [firebaseData, setFirebaseData] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [modalObj, setModalObj] = useState({});
+
+  const handleModal = (obj) => {
+    setModalObj(obj);
+    setModal(!modal);
+  };
 
   const fetchData = async () => {
     try {
@@ -87,7 +98,11 @@ function Podcast() {
             firebaseData.map((item) => {
               return (
                 <ItemsContainer key={item.title} horizontal={false}>
-                  <Item>
+                  <Item
+                    onClick={() =>
+                      handleModal({ title: item.title, img: item.urlImg })
+                    }
+                  >
                     {isImgLoading && <Loading active={isImgLoading} />}
                     <ImgList
                       src={item.urlImg}
@@ -102,6 +117,13 @@ function Podcast() {
             })}
         </Gallery>
       </GalleryContainer>
+      <Modal open={modal} onClose={handleModal}>
+        {
+          <ModalPosition>
+            <ModalPodcast onClose={handleModal} item={modalObj} />
+          </ModalPosition>
+        }
+      </Modal>
     </Container>
   );
 }
