@@ -69,12 +69,7 @@ export const AnswerSquare = styled.div`
   height: 35%;
 
   :hover {
-    background: ${(props) =>
-      props.active ? color.colorGreen2 : color.colorGreen1};
-    box-shadow: ${(props) =>
-      props.active
-        ? '1px 4px 4px 1px rgba(0, 0, 0, 0.25)'
-        : '0px 0px 0px 0px rgba(0, 0, 0, 0.25)'};
+    opacity: 0.9;
   }
 
   ${respondToDown.sm`
