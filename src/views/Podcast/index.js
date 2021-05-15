@@ -41,6 +41,8 @@ function Podcast() {
         items.push({
           title: documentSnapshot.data().title,
           urlImg: documentSnapshot.data().img,
+          description: documentSnapshot.data().description,
+          audio: documentSnapshot.data().audio,
         });
       });
       await fetchImg(items);
@@ -98,11 +100,7 @@ function Podcast() {
             firebaseData.map((item) => {
               return (
                 <ItemsContainer key={item.title} horizontal={false}>
-                  <Item
-                    onClick={() =>
-                      handleModal({ title: item.title, img: item.urlImg })
-                    }
-                  >
+                  <Item onClick={() => handleModal({ ...item })}>
                     {isImgLoading && <Loading active={isImgLoading} />}
                     <ImgList
                       src={item.urlImg}

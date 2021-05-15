@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
+import { storage } from '../../../services/firestore';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Slider from '@material-ui/core/Slider';
+import Loading from '../../../components/Loading/index';
 
 import { Close } from '../../../styles/Modal';
 
@@ -24,12 +26,37 @@ import {
 } from './styles';
 
 function ModalGame1({ item, onClose }) {
+  const [isLoading, setLoading] = useState(true);
   const [play, setPlay] = useState(false);
   const [progress, setProgress] = useState(0);
   const [start, setStart] = useState('00:00');
   const [end, setEnd] = useState('00:00');
   const [seeking, setSeeking] = useState(false);
   const playedRef = useRef({});
+
+  const fetchImg = async () => {
+    try {
+      let starsRef = storage.ref('PodcastsAudio/' + item.audio);
+      await starsRef
+        .getDownloadURL()
+        .then((url) => {
+          item.audio = url;
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setLoading(false);
+          return null;
+        });
+    } catch (error) {
+      setLoading(true);
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchImg();
+  }, []);
 
   const formartDate = (seconds) => {
     let date = new Date(0);
@@ -55,10 +82,17 @@ function ModalGame1({ item, onClose }) {
     setTimeout(() => setSeeking(false), 800);
   };
 
+  if (isLoading)
+    return (
+      <ModalContainer>
+        <Loading active={isLoading} />
+      </ModalContainer>
+    );
+
   return (
     <ModalContainer>
       <ImgContainer>
-        <ImgStyle src={item.img} />
+        <ImgStyle src={item.urlImg} />
       </ImgContainer>
       <TextContainer>
         <Header>
@@ -69,11 +103,7 @@ function ModalGame1({ item, onClose }) {
             </Close>
           </CloseContainer>
         </Header>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu
-          semper nisi, sit amet euismod dui. Duis vel diam quis ante molestie
-          lobortis vitae nec nisi. Morbi ac mollis ligula.
-        </Text>
+        <Text>{item.description}</Text>
       </TextContainer>
       <PlayContainer>
         <ButtonPlay active={play} onClick={() => setPlay(!play)}>
@@ -86,7 +116,7 @@ function ModalGame1({ item, onClose }) {
           playing={play}
           onProgress={onProgress}
           onDuration={onDuration}
-          url="https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3"
+          url={item.audio}
         />
         <ProgressContainer>
           <ProgressText>{start}</ProgressText>
