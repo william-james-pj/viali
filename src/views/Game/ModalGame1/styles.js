@@ -20,6 +20,7 @@ export const Question = styled.div`
   color: ${color.blackText};
   text-align: center;
   margin-top: 30px;
+  user-select: none;
 
   ${respondToDown.sm`
     font-size: ${fonts.normal};
@@ -63,6 +64,7 @@ export const AnswerSquare = styled.div`
   justify-content: center;
   font-weight: 700;
   color: ${color.white2};
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
 
   width: 35%;

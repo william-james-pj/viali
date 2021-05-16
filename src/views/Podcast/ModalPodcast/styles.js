@@ -67,6 +67,7 @@ export const Title = styled.div`
   color: ${color.colorGreen2};
   font-weight: 700;
   font-size: ${fonts.md};
+  user-select: none;
 
   ${respondToDown.sm`
     font-size: ${fonts.sm};
@@ -78,6 +79,7 @@ export const Text = styled.div`
   color: ${color.blackText};
   font-size: ${fonts.normal};
   line-height: 1.5;
+  user-select: none;
 
   ${respondToDown.sm`
     font-size: ${fonts.sm};

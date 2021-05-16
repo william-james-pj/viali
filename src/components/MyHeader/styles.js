@@ -49,6 +49,8 @@ export const TextContainer = styled.div`
 export const Text = styled.div`
   width: 100%;
   color: ${color.white};
+  font-weight: 700;
+  user-select: none;
 `;
 
 export const ImgContainer = styled.div`

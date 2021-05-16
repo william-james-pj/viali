@@ -62,6 +62,7 @@ export const Title = styled.div`
   position: absolute;
   top: 60%;
   left: 15px;
+  user-select: none;
 `;
 
 export const ImgList = styled.img`

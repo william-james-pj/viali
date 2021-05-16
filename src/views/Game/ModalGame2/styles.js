@@ -11,6 +11,7 @@ export const Question = styled.div`
   text-align: center;
   margin-top: 20px;
   padding-inline: 15%;
+  user-select: none;
 
   ${respondToDown.sm`
     font-size: ${fonts.normal};
@@ -77,6 +78,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 20px;
+  user-select: none;
 
   ${respondToDown.sm`
     margin-top: 10px;
@@ -96,6 +98,7 @@ export const Button = styled.div`
   font-weight: 700;
   color: ${color.white2};
   font-size: ${fonts.md};
+  user-select: none;
 
   ${respondToDown.sm`
     width: 350px;

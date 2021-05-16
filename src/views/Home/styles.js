@@ -75,6 +75,7 @@ export const TextBox = styled.div`
   color: ${color.blackText};
   font-size: ${fonts.sm};
   text-align: center;
+  user-select: none;
 `;
 
 export const Img = styled.img`

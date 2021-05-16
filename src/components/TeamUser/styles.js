@@ -63,6 +63,8 @@ export const TextName = styled.div`
   text-align: center;
   font-size: ${fonts.normal};
   font-weight: 700;
+  color: ${color.blackText};
+  user-select: none;
 `;
 
 export const TextDescription = styled.div`
@@ -70,4 +72,6 @@ export const TextDescription = styled.div`
   margin-top: 15px;
   text-align: center;
   font-size: ${fonts.normal};
+  color: ${color.blackText};
+  user-select: none;
 `;
