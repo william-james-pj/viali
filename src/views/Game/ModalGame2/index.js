@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Loading from '../../../components/Loading/index';
 import MsgHappy from '../../../components/MsgHappy/index';
+import MsgStatus from '../../../components/MsgStatus/index';
 
 import {
   ModalContainer,
@@ -21,11 +22,6 @@ import {
   AnswerSquareContainer,
   ButtonContainer,
   Button,
-  RightContainer,
-  WrongContainer,
-  MsgComponent,
-  MsgText,
-  ButtonMsg,
 } from './styles';
 
 function ModalGame2({ onClose }) {
@@ -192,32 +188,12 @@ function ModalGame2({ onClose }) {
         </ButtonContainer>
       </Content>
       {rightOrWeong[0] ? (
-        <RightContainer>
-          <MsgComponent>
-            <MsgText titleProps={true}>Parabéns!!</MsgText>
-            <MsgText>{'Você é dez :)'}</MsgText>
-          </MsgComponent>
-          <ButtonContainer>
-            <ButtonMsg right={true} onClick={handleClickNext}>
-              Próxima
-            </ButtonMsg>
-          </ButtonContainer>
-        </RightContainer>
+        <MsgStatus onClick={handleClickNext} right={true} />
       ) : (
         ''
       )}
       {rightOrWeong[1] ? (
-        <WrongContainer>
-          <MsgComponent>
-            <MsgText titleProps={true}>Ops...</MsgText>
-            <MsgText>{'Não foi dessa vez, tente novamente!'}</MsgText>
-          </MsgComponent>
-          <ButtonContainer>
-            <ButtonMsg right={false} onClick={handleClickAgain}>
-              Novamente
-            </ButtonMsg>
-          </ButtonContainer>
-        </WrongContainer>
+        <MsgStatus onClick={handleClickAgain} right={false} />
       ) : (
         ''
       )}
