@@ -54,6 +54,7 @@ export const Box = styled.div`
     'TextBox';
 
   padding: 10px;
+  margin-inline: 20px;
 
   ${respondToDown.md`
     margin-bottom: 30px;

@@ -8,5 +8,5 @@ export const colorGreen2 = 'rgba(0, 234, 154, 0.8)';
 export const primaryColor = white2;
 export const secondColor = colorGreen1;
 
-export const successColor = '#34d058';
-export const errorColor = '#cb2431';
+export const successColor = '#72d58e';
+export const errorColor = '#ff6666';

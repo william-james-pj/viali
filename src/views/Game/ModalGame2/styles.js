@@ -95,6 +95,8 @@ export const Button = styled.div`
   border-radius: 20px;
   cursor: pointer;
 
+  -webkit-tap-highlight-color: transparent;
+
   font-weight: 700;
   color: ${color.white2};
   font-size: ${fonts.md};
@@ -109,4 +111,50 @@ export const Button = styled.div`
   :hover {
     opacity: 0.6;
   }
+`;
+
+const msgContainer = styled.div`
+  width: 100%;
+  height: 50%;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 20px;
+`;
+
+export const WrongContainer = styled(msgContainer)`
+  background: ${color.errorColor};
+`;
+
+export const RightContainer = styled(msgContainer)`
+  background: ${color.successColor};
+`;
+
+export const ButtonMsg = styled(Button)`
+  background: ${color.primaryColor};
+  color: ${(props) => (props.right ? color.successColor : color.errorColor)};
+`;
+
+export const MsgComponent = styled.div`
+  width: 100%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const MsgText = styled.div`
+  font-weight: ${(props) => (props.titleProps ? '700' : '400')};
+  color: ${color.white2};
+  font-size: ${fonts.md};
+  user-select: none;
+  text-align: center;
 `;

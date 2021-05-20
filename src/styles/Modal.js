@@ -21,6 +21,7 @@ export const ModalContainer = styled.div`
   background: ${color.white2};
   border-radius: 20px;
   padding: 20px;
+  position: relative;
 
   display: grid;
   grid-template-columns: 1fr;
