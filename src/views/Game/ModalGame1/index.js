@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { db, storage } from '../../../services/firestore';
@@ -31,7 +30,7 @@ import {
 
 const CustomSlider = withStyles({
   thumb: {
-    backgroundColor: '#24292E',
+    backgroundColor: '#00EA9A',
   },
   rail: {
     backgroundImage:
@@ -53,7 +52,7 @@ function ModalGame1({ onClose }) {
   const [question, setQuestion] = useState([]);
   const [indexQuestion, setIndexQuestion] = useState(0);
   const [rightOrWeong, setRightOrWeong] = useState([false, false]);
-  const [progress, setProgress] = React.useState(1);
+  const [progress, setProgress] = React.useState(0);
   const [allLoading, setAllLoading] = React.useState(0);
   const [end, setEnd] = useState(false);
 

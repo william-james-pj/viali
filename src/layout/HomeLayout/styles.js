@@ -12,9 +12,18 @@ const menuAnimationClose = keyframes`
  100% { left: -120px; }
 `;
 
-export const Container = styled.div`
+export const BodyContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.1fr 1.9fr;
@@ -38,12 +47,12 @@ export const BarLeftContainer = styled.div`
   z-index: 98;
   animation-iteration-count: inherit;
   animation-duration: 1s;
+  height: 100vh;
 
   ${respondToDown.md`
     position: absolute;
     left: ${(props) => (props.active ? '0px' : '-120px')};
     bottom: 0;
-    height: 100vh;
     width: 100px;
     z-index: 98;
     animation-name: ${(props) =>

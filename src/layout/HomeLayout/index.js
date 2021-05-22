@@ -5,6 +5,7 @@ import BarLeft from '../../components/BarLeft/index';
 import BarTop from '../../components/BarTop/index';
 
 import {
+  BodyContainer,
   Container,
   BarLeftContainer,
   BarTopContainer,
@@ -26,17 +27,19 @@ function HomeLayout() {
   }
 
   return (
-    <Container>
-      <BarLeftContainer active={menuActive}>
-        <BarLeft menuClick={menuClick} />
-      </BarLeftContainer>
-      <BarTopContainer>
-        <BarTop menuOpen={menuOpen} menuClick={menuClick} />
-      </BarTopContainer>
-      <Content>
-        <Routes />
-      </Content>
-    </Container>
+    <BodyContainer>
+      <Container>
+        <BarLeftContainer active={menuActive}>
+          <BarLeft menuClick={menuClick} />
+        </BarLeftContainer>
+        <BarTopContainer>
+          <BarTop menuOpen={menuOpen} menuClick={menuClick} />
+        </BarTopContainer>
+        <Content>
+          <Routes />
+        </Content>
+      </Container>
+    </BodyContainer>
   );
 }
 
