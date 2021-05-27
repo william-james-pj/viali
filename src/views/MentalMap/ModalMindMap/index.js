@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { MapInteractionCSS } from 'react-map-interaction';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,7 +13,9 @@ import { ModalContainer, ImgComponent, ButtonClose } from './styles';
 function ModalGame1({ url, onClose }) {
   return (
     <ModalContainer>
-      <ImgComponent src={url} />
+      <MapInteractionCSS>
+        <ImgComponent src={url} />
+      </MapInteractionCSS>
       <ButtonClose>
         <Close onClick={() => onClose()}>
           <FontAwesomeIcon icon={faTimes} size="lg" />
