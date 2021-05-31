@@ -89,8 +89,8 @@ function Podcast() {
   return (
     <Container>
       <MyHeader
-        title={'Olá seja bem-vindo ao'}
-        text={'Podcast'}
+        title={'Olá! Seja bem-vindo (a) aos'}
+        text={'Podcasts'}
         imgPath={ImgPath}
       />
       <Text>Originais ViALi</Text>

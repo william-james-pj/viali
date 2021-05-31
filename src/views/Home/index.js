@@ -76,7 +76,7 @@ function Home() {
   return (
     <Container>
       <MyHeader
-        title={'Olá seja bem-vindo ao'}
+        title={'Olá! Seja bem-vindo (a) ao'}
         text={'ViALi'}
         imgPath={ImgPath}
       />

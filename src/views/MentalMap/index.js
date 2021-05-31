@@ -86,8 +86,8 @@ function MentalMap() {
   return (
     <Container>
       <MyHeader
-        title={'Olá seja bem-vindo ao'}
-        text={'Mapa Mental'}
+        title={'Olá! Seja bem-vindo (a) aos'}
+        text={'Mapas Mentais'}
         imgPath={ImgPath}
       />
       <Text>Em alta</Text>

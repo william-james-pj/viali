@@ -18,6 +18,7 @@ export const Container = styled.div`
   grid-template-areas: 'TextContainer ImgContainer';
 
   ${respondToDown.md`
+    width: 100%;
     height: 300px;
     grid-template-columns: 1fr;
     grid-template-rows: 1.5fr 0.5fr;
@@ -41,7 +42,7 @@ export const TextContainer = styled.div`
   ${respondToDown.md`
     padding: 0px;
     padding-block: 20px;
-    font-size: ${fonts.md};
+    font-size: 22px;
     text-align: center;
   `}
 `;
