@@ -5,7 +5,7 @@ import { respondToDown } from '../../../config/respondTo';
 
 export const ModalContainer = styled.div`
   width: 70vw;
-  height: 85vh;
+  min-height: 65vh;
 
   max-width: 600px;
   max-height: 400px;
@@ -28,6 +28,8 @@ export const ModalContainer = styled.div`
     grid-template-columns: 0.8fr 1.2fr;
     padding: 10px;
     width: 95vw;
+    height: 85vh;
+    min-height: auto;
   `}
 `;
 
@@ -75,7 +77,7 @@ export const Title = styled.div`
 `;
 
 export const Text = styled.div`
-  margin-top: 30px;
+  margin-top: 15px;
   color: ${color.blackText};
   font-size: ${fonts.normal};
   line-height: 1.5;
@@ -100,7 +102,7 @@ export const PlayContainer = styled.div`
 `;
 
 export const ButtonPlay = styled.div`
-  width: 120px;
+  width: 100px;
   height: 50px;
   border-radius: 10px;
 
@@ -123,7 +125,39 @@ export const ButtonPlay = styled.div`
   }
 
   ${respondToDown.sm`
-    width: 100px;
+    width: 60px;
+    font-size: ${fonts.sm};
+  `}
+`;
+
+export const SpeedContainer = styled.div`
+  width: auto;
+  height: auto;
+`;
+
+export const ButtonSpeed = styled.div`
+  width: 60px;
+  height: 50px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: ${color.white};
+  font-weight: 700;
+  cursor: pointer;
+
+  background: ${color.colorGreen2};
+  box-shadow: 1px 4px 4px 1px rgba(0, 0, 0, 0.25);
+  -webkit-tap-highlight-color: transparent;
+
+  :hover {
+    opacity: 0.8;
+  }
+
+  ${respondToDown.sm`
+    width: 45px;
     font-size: ${fonts.sm};
   `}
 `;

@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player';
 import { storage } from '../../../services/firestore';
 
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faCog } from '@fortawesome/free-solid-svg-icons';
 import Slider from '@material-ui/core/Slider';
 import Loading from '../../../components/Loading/index';
 
@@ -21,6 +24,8 @@ import {
   Text,
   PlayContainer,
   ButtonPlay,
+  SpeedContainer,
+  ButtonSpeed,
   ProgressContainer,
   ProgressText,
 } from './styles';
@@ -29,10 +34,26 @@ function ModalGame1({ item, onClose }) {
   const [isLoading, setLoading] = useState(true);
   const [play, setPlay] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [playbackRate, setPlaybackRate] = useState(1);
   const [start, setStart] = useState('00:00');
   const [end, setEnd] = useState('00:00');
   const [seeking, setSeeking] = useState(false);
   const playedRef = useRef({});
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSpeed = (value) => {
+    setPlaybackRate(value);
+  };
 
   const fetchImg = async () => {
     try {
@@ -109,12 +130,59 @@ function ModalGame1({ item, onClose }) {
         <ButtonPlay active={play} onClick={() => setPlay(!play)}>
           {play ? 'Pause' : 'Play'}
         </ButtonPlay>
+        <SpeedContainer>
+          <ButtonSpeed onClick={handleClick}>
+            <FontAwesomeIcon icon={faCog} size="lg" />
+          </ButtonSpeed>
+          <Menu
+            id="long-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            PaperProps={{
+              style: {
+                maxHeight: 40 * 4.5,
+                width: '8ch',
+              },
+            }}
+          >
+            <MenuItem
+              selected={playbackRate === 1}
+              onClick={() => {
+                handleClose();
+                handleSpeed(1);
+              }}
+            >
+              {'1x'}
+            </MenuItem>
+            <MenuItem
+              selected={playbackRate === 1.5}
+              onClick={() => {
+                handleClose();
+                handleSpeed(1.5);
+              }}
+            >
+              {'1.5x'}
+            </MenuItem>
+            <MenuItem
+              selected={playbackRate === 2}
+              onClick={() => {
+                handleClose();
+                handleSpeed(2);
+              }}
+            >
+              {'2x'}
+            </MenuItem>
+          </Menu>
+        </SpeedContainer>
         <ReactPlayer
           ref={playedRef}
           width={0}
           height={0}
           playing={play}
           onProgress={onProgress}
+          playbackRate={playbackRate}
           onDuration={onDuration}
           url={item.audio}
         />
