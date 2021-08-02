@@ -66,9 +66,9 @@ function BarLeft(props) {
         </MenuItem>
         <MenuItem>
           <Item
-            active={location.pathname == '/aboutus' ? true : false}
+            active={location.pathname == '/about' ? true : false}
             onClick={() => {
-              history.push('/aboutus');
+              history.push('/about');
               props.menuClick();
             }}
           >

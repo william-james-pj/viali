@@ -16,7 +16,7 @@ function Routes() {
       <MyRoute exact path="/podcast" component={Podcast} />
       <MyRoute exact path="/game" component={Game} />
       <MyRoute exact path="/mentalmap" component={MentalMap} />
-      <MyRoute exact path="/aboutus" component={About} />
+      <MyRoute exact path="/about" component={About} />
       <MyRoute path="*" component={Page404} />
     </Switch>
   );

@@ -4,6 +4,7 @@ import { db, storage } from '../../services/firestore';
 import Modal from '@material-ui/core/Modal';
 import ModalGame1 from './ModalGame1/index';
 import ModalGame2 from './ModalGame2/index';
+import ModalGame3 from './ModalGame3/index';
 import { ModalPosition } from '../../styles/Modal';
 
 import MyHeader from '../../components/MyHeader/index';
@@ -122,8 +123,10 @@ function Game() {
           <ModalPosition>
             {modalOpe === 'De quem é o híbrido?' ? (
               <ModalGame1 onClose={handleModal} />
-            ) : (
+            ) : modalOpe === 'Baralho dos seres vivos' ? (
               <ModalGame2 onClose={handleModal} />
+            ) : (
+              <ModalGame3 onClose={handleModal} />
             )}
           </ModalPosition>
         }
