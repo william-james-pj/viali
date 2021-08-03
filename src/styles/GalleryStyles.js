@@ -7,11 +7,11 @@ export const Gallery = styled.div`
   width: 100%;
   display: inline-flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: ${(props) => (props.space ? 'space-between' : 'flex-start')};
 
   ${respondToDown.md`
     justify-content: center;
-  `}
+  `};
 `;
 
 export const ItemsContainer = styled.div`

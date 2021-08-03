@@ -95,7 +95,7 @@ function Podcast() {
       />
       <Text>Originais ViALi</Text>
       <GalleryContainer>
-        <Gallery>
+        <Gallery space={firebaseData.length >= 3 ? true : false}>
           {firebaseData.length > 0 &&
             firebaseData.map((item) => {
               return (
