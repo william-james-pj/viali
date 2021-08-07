@@ -14,6 +14,8 @@ import { Container, Text, GalleryContainer } from './styles';
 import {
   Gallery,
   ItemsContainer,
+  NewIdentifier,
+  TextNewIdentifier,
   Item,
   ImgList,
   Override,
@@ -43,6 +45,7 @@ function Podcast() {
           urlImg: documentSnapshot.data().img,
           description: documentSnapshot.data().description,
           audio: documentSnapshot.data().audio,
+          new: documentSnapshot.data().new,
         });
       });
       await fetchImg(items);
@@ -101,6 +104,9 @@ function Podcast() {
               return (
                 <ItemsContainer key={item.title} horizontal={false}>
                   <Item onClick={() => handleModal({ ...item })}>
+                    <NewIdentifier active={item.new}>
+                      <TextNewIdentifier>Novo</TextNewIdentifier>
+                    </NewIdentifier>
                     {isImgLoading && <Loading active={isImgLoading} />}
                     <ImgList
                       src={item.urlImg}

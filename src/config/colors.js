@@ -5,6 +5,8 @@ export const blackText = '#24292E';
 export const colorGreen1 = '#00EA9A';
 export const colorGreen2 = 'rgba(0, 234, 154, 0.8)';
 
+export const colorRed = 'rgba(240, 52, 52, 1)';
+
 export const primaryColor = white2;
 export const secondColor = colorGreen1;
 

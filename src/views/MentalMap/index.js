@@ -13,6 +13,8 @@ import { Container, Text, GalleryContainer } from './styles';
 import {
   Gallery,
   ItemsContainer,
+  NewIdentifier,
+  TextNewIdentifier,
   Item,
   ImgList,
   Override,
@@ -40,6 +42,7 @@ function MentalMap() {
         items.push({
           title: documentSnapshot.data().title,
           urlImg: documentSnapshot.data().img,
+          new: documentSnapshot.data().new,
         });
       });
       await fetchImg(items);
@@ -98,6 +101,9 @@ function MentalMap() {
               return (
                 <ItemsContainer key={item.title} horizontal={true}>
                   <Item onClick={() => handleModal(item.urlImg)}>
+                    <NewIdentifier active={item.new}>
+                      <TextNewIdentifier>Novo</TextNewIdentifier>
+                    </NewIdentifier>
                     {isImgLoading && <Loading active={isImgLoading} />}
                     <ImgList
                       src={item.urlImg}

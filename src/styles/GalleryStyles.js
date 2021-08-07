@@ -19,12 +19,44 @@ export const ItemsContainer = styled.div`
   width: ${(props) => (props.horizontal ? '320px' : '200px')};
   height: ${(props) => (props.horizontal ? '190px' : '300px')};
   cursor: pointer;
+  position: relative;
 
   -webkit-tap-highlight-color: transparent;
 
   ${respondToDown.md`
     width: ${(props) => (props.horizontal ? '270px' : '150px')};
     height: ${(props) => (props.horizontal ? '140px' : '250px')};
+  `}
+`;
+
+export const NewIdentifier = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+
+  width: 45px;
+  height: 55px;
+  background: ${color.colorRed};
+  border-radius: 0 0 0 20px;
+
+  display: ${(props) => (props.active ? 'flex' : 'none')};
+  align-items: center;
+  justify-content: center;
+
+  ${respondToDown.sm`
+    width: 35px;
+    height: 45px;
+  `}
+`;
+
+export const TextNewIdentifier = styled.div`
+  color: ${color.white};
+  font-weight: 700;
+  font-size: ${fonts.sm};
+
+  ${respondToDown.sm`
+    font-size: ${fonts.xs};
   `}
 `;
 

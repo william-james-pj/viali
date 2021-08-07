@@ -15,6 +15,8 @@ import { Container, Text, GalleryContainer } from './styles';
 import {
   Gallery,
   ItemsContainer,
+  NewIdentifier,
+  TextNewIdentifier,
   Item,
   ImgList,
   Override,
@@ -41,6 +43,7 @@ function Game() {
         items.push({
           title: documentSnapshot.data().title,
           urlImg: documentSnapshot.data().img,
+          new: documentSnapshot.data().new,
         });
       });
       await fetchImg(items);
@@ -104,6 +107,9 @@ function Game() {
                       handleModal();
                     }}
                   >
+                    <NewIdentifier active={item.new}>
+                      <TextNewIdentifier>Novo</TextNewIdentifier>
+                    </NewIdentifier>
                     {isImgLoading && <Loading active={isImgLoading} />}
                     <ImgList
                       src={item.urlImg}
