@@ -29,6 +29,8 @@
 <br />
 Minhas amigas são estudantes do IFSP - Câmpus São Roque, e elas me procuram para ajudá-la na elaboração de um projeto de Biologia. Elas pensam em elaborar um site onde fosse possível a publicação de mapas mentais, podcast e alguns pequenos jogos. Eu decidi ajudá-las e depois de algumas calls chegamos a um conceito e começamos a elaboração do conteúdo. Então este repositório contém o resultado final do projeto, ficou simples mas o importante é ser funcional.
 
+[Link do site](https://vialiofficial.web.app/).
+
 ### Construído com
 
 O projeto foi construído utilizando
